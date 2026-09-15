@@ -1555,6 +1555,410 @@ export default function Scanner({ onScanComplete }) {
             }
           }
 
+          /* =====================================================
+             MOBILE POLISH
+             Designed specifically for narrow phone screens.
+          ===================================================== */
+          @media (max-width: 600px) {
+            .scanner-page {
+              width: 100%;
+              box-sizing: border-box;
+              padding: 18px 12px 36px;
+              overflow-x: hidden;
+            }
+
+            .scanner-hero {
+              margin-bottom: 18px;
+            }
+
+            .scanner-eyebrow {
+              max-width: 100%;
+              padding: 6px 9px;
+              gap: 6px;
+              font-size: 10px;
+              letter-spacing: 0.065em;
+            }
+
+            .scanner-title {
+              margin: 12px 0 8px;
+              max-width: 100%;
+              font-size: clamp(28px, 8.5vw, 36px);
+              line-height: 1.05;
+              letter-spacing: -0.035em;
+            }
+
+            .scanner-subtitle {
+              max-width: 100%;
+              font-size: 13px;
+              line-height: 1.6;
+            }
+
+            .scanner-testnet-pill {
+              max-width: 100%;
+              box-sizing: border-box;
+              margin-top: 13px;
+              padding: 7px 10px;
+              gap: 6px;
+              flex-wrap: wrap;
+              font-size: 10px;
+              line-height: 1.35;
+              border-radius: 9px;
+            }
+
+            .scanner-testnet-pill > span:last-child {
+              flex-basis: 100%;
+              padding-left: 13px;
+              color: var(--text-muted);
+              font-weight: 600;
+            }
+
+            .scanner-card {
+              border-radius: 15px;
+              box-shadow: 0 10px 28px var(--shadow);
+            }
+
+            .scanner-search-card {
+              padding: 15px;
+            }
+
+            .scanner-form-label {
+              margin-bottom: 8px;
+              font-size: 12px;
+            }
+
+            .scanner-input-row {
+              display: flex;
+              flex-direction: column;
+              gap: 9px;
+            }
+
+            .scanner-input {
+              height: 50px;
+              box-sizing: border-box;
+              padding: 0 42px 0 41px;
+              border-radius: 11px;
+              font-size: 13px;
+            }
+
+            .scanner-input-icon {
+              left: 13px;
+            }
+
+            .scanner-input-clear {
+              right: 8px;
+            }
+
+            .scanner-button {
+              width: 100%;
+              min-height: 50px;
+              height: 50px;
+              padding: 0 16px;
+              border-radius: 11px;
+              font-size: 13px;
+            }
+
+            .scanner-hint {
+              margin-top: 9px;
+              gap: 5px;
+              font-size: 10px;
+              line-height: 1.45;
+            }
+
+            .scanner-hint span:last-child {
+              display: none;
+            }
+
+            .scanner-result {
+              margin-top: 16px;
+              gap: 12px;
+            }
+
+            .scanner-result-header {
+              padding: 15px;
+              gap: 13px;
+              border-radius: 15px;
+            }
+
+            .scanner-result-kicker {
+              margin-bottom: 7px;
+              font-size: 9px;
+            }
+
+            .scanner-address {
+              gap: 7px;
+              font-size: 11px;
+              line-height: 1.45;
+            }
+
+            .scanner-copy {
+              width: 32px;
+              height: 32px;
+              border-radius: 8px;
+            }
+
+            .scanner-type-badge {
+              max-width: 100%;
+              box-sizing: border-box;
+              margin-top: 9px;
+              padding: 5px 7px;
+              font-size: 9px;
+              line-height: 1.35;
+              white-space: normal;
+            }
+
+            .scanner-score {
+              min-width: 0;
+              width: 100%;
+              box-sizing: border-box;
+              padding: 12px 14px;
+              border-radius: 11px;
+              text-align: left;
+            }
+
+            .scanner-score-number {
+              font-size: 27px;
+            }
+
+            .scanner-score-label {
+              margin-top: 4px;
+              font-size: 10px;
+            }
+
+            .scanner-grid,
+            .scanner-counts {
+              grid-template-columns: 1fr 1fr;
+              gap: 9px;
+            }
+
+            .scanner-stat {
+              padding: 13px;
+            }
+
+            .scanner-stat-icon {
+              width: 31px;
+              height: 31px;
+              border-radius: 9px;
+            }
+
+            .scanner-stat-label {
+              margin-top: 11px;
+              font-size: 9px;
+              line-height: 1.35;
+            }
+
+            .scanner-stat-value {
+              font-size: 17px;
+            }
+
+            .scanner-section,
+            .scanner-funding {
+              padding: 15px;
+            }
+
+            .scanner-section-header {
+              align-items: flex-start;
+              margin-bottom: 13px;
+            }
+
+            .scanner-section-title {
+              gap: 7px;
+              font-size: 13px;
+              line-height: 1.35;
+            }
+
+            .scanner-section-subtitle {
+              font-size: 10px;
+              line-height: 1.45;
+            }
+
+            .scanner-asset {
+              grid-template-columns: 36px minmax(0, 1fr);
+              gap: 9px;
+              padding: 11px;
+              border-radius: 11px;
+            }
+
+            .scanner-asset-icon {
+              width: 34px;
+              height: 34px;
+              border-radius: 9px;
+            }
+
+            .scanner-asset-name {
+              font-size: 12px;
+            }
+
+            .scanner-asset-issuer {
+              font-size: 9px;
+            }
+
+            .scanner-asset-balance {
+              grid-column: 2;
+              text-align: left;
+              font-size: 12px;
+              margin-top: -2px;
+            }
+
+            .scanner-finding {
+              grid-template-columns: 34px minmax(0, 1fr);
+              gap: 9px;
+              padding: 11px;
+              border-radius: 11px;
+            }
+
+            .scanner-finding-icon {
+              width: 34px;
+              height: 34px;
+              border-radius: 9px;
+            }
+
+            .scanner-finding-title {
+              font-size: 12px;
+              line-height: 1.4;
+            }
+
+            .scanner-finding-description {
+              margin-top: 4px;
+              font-size: 11px;
+              line-height: 1.55;
+            }
+
+            .scanner-finding-recommendation {
+              margin-top: 7px;
+              font-size: 10px;
+            }
+
+            .scanner-contract {
+              grid-template-columns: 1fr;
+              gap: 9px;
+            }
+
+            .scanner-contract-item {
+              padding: 12px;
+              border-radius: 11px;
+            }
+
+            .scanner-contract-label {
+              font-size: 9px;
+            }
+
+            .scanner-contract-value {
+              font-size: 12px;
+            }
+
+            .scanner-functions {
+              gap: 5px;
+            }
+
+            .scanner-function {
+              padding: 5px 7px;
+              font-size: 9px;
+            }
+
+            .scanner-funding-grid,
+            .scanner-funding-inline-grid {
+              grid-template-columns: 1fr;
+              gap: 9px;
+            }
+
+            .scanner-funding-card {
+              padding: 13px;
+              border-radius: 11px;
+            }
+
+            .scanner-funding-description {
+              min-height: auto;
+              font-size: 10px;
+            }
+
+            .scanner-wallet-status {
+              padding: 13px;
+              gap: 10px;
+              border-radius: 12px;
+            }
+
+            .scanner-wallet-status-icon {
+              width: 34px;
+              height: 34px;
+              flex-basis: 34px;
+              border-radius: 10px;
+            }
+
+            .scanner-wallet-status-label {
+              font-size: 9px;
+            }
+
+            .scanner-wallet-status-title {
+              font-size: 14px;
+              line-height: 1.35;
+            }
+
+            .scanner-wallet-status-message {
+              font-size: 11px;
+              line-height: 1.5;
+            }
+
+            .scanner-funding-inline {
+              padding: 13px;
+              border-radius: 12px;
+            }
+
+            .scanner-funding-inline-heading h3 {
+              font-size: 14px;
+            }
+
+            .scanner-funding-inline-heading p {
+              font-size: 11px;
+              line-height: 1.5;
+            }
+
+            .scanner-notifications {
+              right: 12px;
+              bottom: 12px;
+              width: calc(100vw - 24px);
+            }
+
+            .scanner-notification {
+              grid-template-columns: 34px minmax(0, 1fr) 24px;
+              gap: 8px;
+              padding: 11px;
+              border-radius: 12px;
+            }
+
+            .scanner-notification-icon {
+              width: 34px;
+              height: 34px;
+              border-radius: 9px;
+            }
+          }
+
+          @media (max-width: 380px) {
+            .scanner-page {
+              padding-left: 10px;
+              padding-right: 10px;
+            }
+
+            .scanner-search-card,
+            .scanner-section,
+            .scanner-funding,
+            .scanner-result-header {
+              padding: 13px;
+            }
+
+            .scanner-title {
+              font-size: 27px;
+            }
+
+            .scanner-subtitle {
+              font-size: 12px;
+            }
+
+            .scanner-grid,
+            .scanner-counts {
+              gap: 7px;
+            }
+          }
+
           @media (prefers-reduced-motion: reduce) {
             .scanner-notification {
               animation: none;
@@ -1630,7 +2034,7 @@ export default function Scanner({ onScanComplete }) {
                     setError("");
                   }
                 }}
-                placeholder="Enter a G... wallet or C... contract address"
+                placeholder="Enter G... wallet or C... contract address"
                 autoComplete="off"
                 spellCheck="false"
               />
