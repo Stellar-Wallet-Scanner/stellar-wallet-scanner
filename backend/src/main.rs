@@ -206,6 +206,7 @@ async fn main() {
         .allow_headers(tower_http::cors::Any);
 
     let app = Router::new()
+        .route("/", get(root))
         .route("/health", get(health_check))
         .route(
             "/api/wallet/check/{address}",
@@ -255,6 +256,10 @@ async fn main() {
     axum::serve(listener, app)
         .await
         .expect("Server failed");
+}
+
+async fn root() -> 'static str {
+    "Stellar Wallet Scanner Backend is running on Stellar Testnet. Health: /health"
 }
 
 async fn health_check() -> Json<HealthResponse> {
