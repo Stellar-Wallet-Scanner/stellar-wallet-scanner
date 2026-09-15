@@ -258,7 +258,7 @@ async fn main() {
         .expect("Server failed");
 }
 
-async fn root() -> 'static str {
+async fn root() -> &'static str {
     "Stellar Wallet Scanner Backend is running on Stellar Testnet. Health: /health"
 }
 
