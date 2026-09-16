@@ -1,0 +1,8 @@
+{
+  "A_intro": true,
+  "B_account_scan": true,
+  "C_contract_scan": true,
+  "D_history": true,
+  "E_analytics": true,
+  "G_vercel": true
+}

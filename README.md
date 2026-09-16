@@ -1,6 +1,61 @@
 # Stellar Scan
 
+[![Watch the pitch video](https://img.shields.io/badge/🎬_Watch_the_pitch_video-2_min-7c5cff?style=for-the-badge)](https://gofile.io/d/ad1YDCAe)
+[![Live on Vercel](https://img.shields.io/badge/▲_Live_on_Vercel-stellar--wallet--scanner-000?style=for-the-badge&logo=vercel)](https://stellar-wallet-scanner.vercel.app)
+[![Built on Stellar](https://img.shields.io/badge/Built_on-Stellar_Testnet-7d00ff?style=for-the-badge&logo=stellar)](https://stellar.org)
+[![License](https://img.shields.io/badge/License-Open_source-22d3ee?style=for-the-badge)](#license)
+
+<br />
+
+<div align="center">
+  <a href="https://gofile.io/d/ad1YDCAe">
+    <img src="assets/pitch-thumbnail.png" alt="Stellar Scan — pitch video thumbnail: account scan scoring 100/100" width="820" />
+  </a>
+  <p><sub><b>▶ Click the thumbnail to watch the 2-minute product pitch.</b>
+  Real UI captures, Gemini voice-over, architecture walkthrough and a live Vercel deployment —
+  <a href="#-product-pitch-video">scene-by-scene breakdown</a> below.</sub></p>
+</div>
+
+<br />
+
 Stellar Scan is a security intelligence platform for the Stellar ecosystem. It provides read-only analysis of Stellar Testnet accounts and Soroban smart contracts to surface potential security risks through a simple dashboard.
+
+## ✨ Why Stellar Scan
+
+Anyone can paste a Stellar address and — in seconds — know what they are actually interacting with, before trusting it with value:
+
+- **Two address types, one scanner** — wallets (`G...`) *and* Soroban smart contracts (`C...`)
+- **Instant security verdicts** — scores plus severity-ranked findings, not a wall of raw chain data
+- **Contract risk detection** — inspects deployed WASM, enumerates exported functions, and flags admin / upgrade / pause capabilities (the #1 rug-pull vector)
+- **Account configuration audits** — balances, signers, and thresholds flagged when risky
+- **Zero-friction** — no wallet connection, no private keys, no transaction signing, no sign-up
+- **Local-first history & analytics** — every scan stays in your browser and rolls up into security trends
+
+## 🎬 Product Pitch Video
+
+The 2-minute pitch above is the fastest way to understand the product. What it covers:
+
+| # | Scene | What you see |
+|---|-------|--------------|
+| 1 | Cold open | Logo, tagline — *security intelligence for Stellar, in seconds* |
+| 2 | The problem | On-chain code holds real value; audits cost $15k+ and weeks |
+| 3 | The solution | Paste any Testnet address → instant read-only verdict |
+| 4 | Account scan | Live scan scoring a healthy wallet **100/100**, auto-funding flow |
+| 5 | Contract scan | Live WASM analysis of a Soroban token — **upgrade path caught** |
+| 6 | History & analytics | Local scan history, portfolio-wide security trends |
+| 7 | Architecture | React + Vite → Rust/Axum → Stellar RPC, read-only by design |
+| 8 | Live demo + CTA | Production Vercel deployment, try-your-own-address |
+
+**▶ [Watch the full pitch video](https://gofile.io/d/ad1YDCAe)** · [Open the live app](https://stellar-wallet-scanner.vercel.app)
+
+## 🖥️ Live Demo
+
+**[stellar-wallet-scanner.vercel.app](https://stellar-wallet-scanner.vercel.app)** — try it right now with any Testnet address:
+
+- Account: `GBVVPXTBPYEOYQJHIIVIOUBFXXSHYSP6GN2XZN56L7VAX7ZNT66WDFSU`
+- Soroban contract: `CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWFEIE3USCIHMXQDAMA`
+
+No setup, no wallet — just paste and scan.
 
 ## Features
 
@@ -84,8 +139,8 @@ For a `C...` address, the application retrieves the deployed Soroban contract da
 ## Getting Started
 
 ```bash
-git clone YOUR_REPOSITORY_URL
-cd stellar-contract-scanner
+git clone https://github.com/mosesifunanya/stellar-wallet-scanner
+cd stellar-wallet-scanner
 npm install
 npm run dev
 ```
