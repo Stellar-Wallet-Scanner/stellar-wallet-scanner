@@ -1,78 +1,130 @@
 # Stellar Scan
 
-[![Watch the pitch video](https://img.shields.io/badge/🎬_Watch_the_pitch_video-2_min-7c5cff?style=for-the-badge)](https://github.com/mosesifunanya/stellar-wallet-scanner/blob/main/video/out/pitch.mp4)
+[![Watch the Pitch Video](https://img.shields.io/badge/🎬_Watch_the_Pitch_Video-2_min-7c5cff?style=for-the-badge)](https://github.com/Stellar-Wallet-Scanner/stellar-wallet-scanner/blob/main/video/out/pitch.mp4)
 [![Live on Vercel](https://img.shields.io/badge/▲_Live_on_Vercel-stellar--wallet--scanner-000?style=for-the-badge&logo=vercel)](https://stellar-wallet-scanner.vercel.app)
 [![Built on Stellar](https://img.shields.io/badge/Built_on-Stellar_Testnet-7d00ff?style=for-the-badge&logo=stellar)](https://stellar.org)
-[![License](https://img.shields.io/badge/License-Open_source-22d3ee?style=for-the-badge)](#license)
+[![License](https://img.shields.io/badge/License-Open_Source-22d3ee?style=for-the-badge)](#license)
 
 <br />
 
 <div align="center">
-  <a href="https://github.com/mosesifunanya/stellar-wallet-scanner/blob/main/video/out/pitch.mp4">
-    <img src="assets/pitch-thumbnail.png" alt="Stellar Scan — pitch video thumbnail: account scan scoring 100/100" width="820" />
+
+  <a href="https://github.com/Stellar-Wallet-Scanner/stellar-wallet-scanner/blob/main/video/out/pitch.mp4">
+    <img src="assets/pitch-thumbnail.png" alt="Stellar Scan pitch video thumbnail" width="820" />
   </a>
-  <p><sub><b>▶ Click the thumbnail to watch the 2-minute product pitch.</b>
-  Real UI captures, Gemini voice-over, architecture walkthrough and a live Vercel deployment —
-  <a href="#-product-pitch-video">scene-by-scene breakdown</a> below.<br />
-  Mirror: <a href="https://gofile.io/d/ad1YDCAe">gofile.io/d/ad1YDCAe</a></sub></p>
+
+  <p>
+    <sub>
+      <b>▶ Click the thumbnail to watch the 2-minute product pitch.</b><br />
+      Real UI captures, Gemini voice-over, architecture walkthrough and live Vercel deployment.
+    </sub>
+  </p>
+
 </div>
 
 <br />
 
-Stellar Scan is a security intelligence platform for the Stellar ecosystem. It provides read-only analysis of Stellar Testnet accounts and Soroban smart contracts to surface potential security risks through a simple dashboard.
+## Overview
 
-## ✨ Why Stellar Scan
+Stellar Scan is a security intelligence platform for the Stellar ecosystem.
 
-Anyone can paste a Stellar address and — in seconds — know what they are actually interacting with, before trusting it with value:
+It provides read-only analysis of Stellar Testnet accounts and Soroban smart contracts, helping users surface potential security risks through a simple and accessible dashboard.
 
-- **Two address types, one scanner** — wallets (`G...`) *and* Soroban smart contracts (`C...`)
-- **Instant security verdicts** — scores plus severity-ranked findings, not a wall of raw chain data
-- **Contract risk detection** — inspects deployed WASM, enumerates exported functions, and flags admin / upgrade / pause capabilities (the #1 rug-pull vector)
-- **Account configuration audits** — balances, signers, and thresholds flagged when risky
-- **Zero-friction** — no wallet connection, no private keys, no transaction signing, no sign-up
-- **Local-first history & analytics** — every scan stays in your browser and rolls up into security trends
+The platform is designed to allow users to inspect Stellar addresses without connecting a wallet, providing a low-friction way to understand account configurations and deployed Soroban contract capabilities.
+
+## Why Stellar Scan
+
+Anyone can paste a Stellar address and quickly understand what they are interacting with before trusting it with value.
+
+### Key capabilities
+
+- Two address types, one scanner — wallets (`G...`) and Soroban smart contracts (`C...`)
+- Instant security verdicts — scores plus severity-ranked findings, not a wall of raw chain data
+- Contract risk detection — inspects deployed WASM, enumerates exported functions, and flags admin, upgrade, and pause capabilities
+- Account configuration audits — balances, signers, and thresholds flagged when risky
+- Zero-friction — no wallet connection, no private keys, no transaction signing, no sign-up
+- Local-first history and analytics — every scan stays in your browser and rolls up into security trends
 
 ## 🎬 Product Pitch Video
 
-The 2-minute pitch above is the fastest way to understand the product. What it covers:
+The 2-minute product pitch demonstrates the core product experience, architecture, and live deployment.
 
-> **▶ [Watch the pitch video (stream right on GitHub)](https://github.com/mosesifunanya/stellar-wallet-scanner/blob/main/video/out/pitch.mp4)**
-> Direct file: [raw.githubusercontent.com — video/out/pitch.mp4](https://raw.githubusercontent.com/mosesifunanya/stellar-wallet-scanner/main/video/out/pitch.mp4) · Mirror: [gofile.io/d/ad1YDCAe](https://gofile.io/d/ad1YDCAe)
+### What the pitch covers
 
-| # | Scene | What you see |
-|---|-------|--------------|
-| 1 | Cold open | Logo, tagline — *security intelligence for Stellar, in seconds* |
-| 2 | The problem | On-chain code holds real value; audits cost $15k+ and weeks |
-| 3 | The solution | Paste any Testnet address → instant read-only verdict |
-| 4 | Account scan | Live scan scoring a healthy wallet **100/100**, auto-funding flow |
-| 5 | Contract scan | Live WASM analysis of a Soroban token — **upgrade path caught** |
-| 6 | History & analytics | Local scan history, portfolio-wide security trends |
-| 7 | Architecture | React + Vite → Rust/Axum → Stellar RPC, read-only by design |
-| 8 | Live demo + CTA | Production Vercel deployment, try-your-own-address |
+| # | Scene | Description |
+|---|---|---|
+| 1 | Cold Open | Product introduction and security-focused positioning |
+| 2 | The Problem | Challenges involved in understanding on-chain contract behavior |
+| 3 | The Solution | Testnet address scanning and read-only security analysis |
+| 4 | Account Scan | Analysis of a Stellar account and security scoring |
+| 5 | Contract Scan | Soroban WASM analysis and capability detection |
+| 6 | History & Analytics | Local scan history and security trends |
+| 7 | Architecture | React + Vite → Rust/Axum → Stellar RPC |
+| 8 | Live Demo | Production Vercel deployment and application walkthrough |
 
-**▶ [Watch the full pitch video](https://github.com/mosesifunanya/stellar-wallet-scanner/blob/main/video/out/pitch.mp4)** · [Open the live app](https://stellar-wallet-scanner.vercel.app)
+### Watch the pitch
+
+[▶ Watch the full pitch video](https://github.com/Stellar-Wallet-Scanner/stellar-wallet-scanner/blob/main/video/out/pitch.mp4)
+
+[Open the live application](https://stellar-wallet-scanner.vercel.app)
 
 ## 🖥️ Live Demo
 
-**[stellar-wallet-scanner.vercel.app](https://stellar-wallet-scanner.vercel.app)** — try it right now with any Testnet address:
+### [stellar-wallet-scanner.vercel.app](https://stellar-wallet-scanner.vercel.app)
 
-- Account: `GBVVPXTBPYEOYQJHIIVIOUBFXXSHYSP6GN2XZN56L7VAX7ZNT66WDFSU`
-- Soroban contract: `CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWFEIE3USCIHMXQDAMA`
+Stellar Scan currently operates on Stellar Testnet.
 
-No setup, no wallet — just paste and scan.
+You can test the application with:
+
+### Stellar Testnet Account
+
+```text
+GBVVPXTBPYEOYQJHIIVIOUBFXXSHYSP6GN2XZN56L7VAX7ZNT66WDFSU
+```
+
+### Soroban Testnet Contract
+
+```text
+CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWFEIE3USCIHMXQDAMA
+```
+
+No setup or wallet connection is required.
+
+Simply paste a supported Testnet address and scan.
 
 ## Features
 
+### Stellar Account Analysis
+
 - Scan Stellar Testnet accounts (`G...`)
+- Retrieve account information
+- Analyze account balances
+- Inspect signers
+- Analyze account thresholds
+- Identify potentially risky account configurations
+
+### Soroban Contract Analysis
+
 - Scan Soroban smart contracts (`C...`)
-- Analyze account balances, signers, and thresholds
-- Inspect deployed contract WASM
-- Detect administrative and upgrade-related capabilities
-- Generate preliminary security scores and findings
-- Scan history and security analytics
-- Dark and light mode
+- Retrieve deployed contract information
+- Inspect deployed WASM
+- Enumerate exported functions
+- Detect administrative capabilities
+- Detect upgrade-related capabilities
+- Detect pause-related capabilities
+- Generate preliminary security findings
+
+### User Experience
+
+- Simple address-based scanning
+- No wallet connection
+- No private keys
+- No transaction signing
+- No account registration
 - Responsive interface
-- No wallet connection or transaction signing required
+- Dark and light mode
+- Local scan history
+- Security analytics
 
 ## How It Works
 
@@ -90,36 +142,74 @@ Security Assessment
 Score & Findings
 ```
 
+The application first determines whether the submitted address represents a Stellar account or a Soroban smart contract.
+
+The appropriate analysis pipeline is then executed and the resulting information is processed into security findings and a preliminary security score.
+
 ## Architecture
 
 ```text
 User enters Stellar address
           |
           v
-   Address Detection
-       /       \
-     G...      C...
-      |          |
-      v          v
+    Address Detection
+        /       \
+      G...      C...
+       |          |
+       v          v
 Existing or    Soroban
 New Account    Contract
-      |          |
-      v          v
+       |          |
+       v          v
 Rust Backend   WASM Analysis
-      |          |
-      v          v
+       |          |
+       v          v
 Account Data   Contract Data
-      |          |
-      +-----+----+
-            |
-            v
-    Security Assessment
-            |
-            v
-      Score & Findings
+       |          |
+       +-----+----+
+             |
+             v
+      Security Assessment
+             |
+             v
+       Score & Findings
 ```
 
-### Wallet Flow
+### Application Flow
+
+```text
+                    ┌──────────────────────┐
+                    │        User          │
+                    │   Stellar Address    │
+                    └──────────┬───────────┘
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │  Address Detection   │
+                    └──────────┬───────────┘
+                               │
+                    ┌──────────┴───────────┐
+                    │                      │
+                    ▼                      ▼
+              G... Account            C... Contract
+                    │                      │
+                    ▼                      ▼
+             Account Analysis       WASM Analysis
+                    │                      │
+                    └──────────┬───────────┘
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │ Security Assessment  │
+                    └──────────┬───────────┘
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │  Score & Findings    │
+                    └──────────────────────┘
+```
+
+## Wallet Flow
 
 For a new `G...` Testnet account, the backend can detect that the account is not funded and handle the Testnet funding flow before completing the scan.
 
@@ -127,29 +217,63 @@ For an existing `G...` account, Stellar Scan retrieves the available account inf
 
 For a `C...` address, the application retrieves the deployed Soroban contract data and analyzes its WASM and exported functions.
 
-## Tech Stack
+## Technology Stack
+
+### Frontend
 
 - React
 - Vite
 - JavaScript
 - Tailwind CSS
 - Lucide React
+
+### Blockchain
+
 - Stellar SDK
 - Soroban
-- Stellar Testnet RPC
+- Stellar Testnet
+- Stellar RPC
 - Stellar XDR
-- Rust backend
+
+### Backend
+
+- Rust
+- Rust-based backend services
+- WASM analysis
 
 ## Getting Started
 
+### Prerequisites
+
+Make sure you have Node.js and npm installed.
+
+### Clone the repository
+
 ```bash
-git clone https://github.com/mosesifunanya/stellar-wallet-scanner
+git clone https://github.com/Stellar-Wallet-Scanner/stellar-wallet-scanner.git
+```
+
+### Navigate into the project
+
+```bash
 cd stellar-wallet-scanner
+```
+
+### Install dependencies
+
+```bash
 npm install
+```
+
+### Start the development server
+
+```bash
 npm run dev
 ```
 
-Build for production:
+The application will then be available through the local development URL provided by Vite.
+
+### Build for production
 
 ```bash
 npm run build
@@ -157,21 +281,43 @@ npm run build
 
 ## Network
 
-Stellar Scan currently operates on Stellar Testnet.
+Stellar Scan currently operates on:
 
-All scanning is read-only.
+```text
+Stellar Testnet
+```
+
+All scanning functionality is designed to be read-only.
+
+The application does not require users to sign transactions or provide private keys.
+
+## Security Model
+
+Stellar Scan performs preliminary automated security analysis by examining publicly available account and contract information.
+
+Detected capabilities should be treated as security signals requiring further investigation.
+
+A detected administrative or upgrade capability does not automatically mean that a contract is vulnerable or malicious.
 
 ## Security Notice
 
-Stellar Scan provides preliminary automated security analysis. Detected capabilities are security signals for further investigation and do not automatically indicate that a contract is vulnerable.
+Stellar Scan provides preliminary automated security analysis.
 
-It is not a replacement for a professional smart contract audit.
+Detected capabilities are security signals for further investigation and do not automatically indicate that a contract is vulnerable.
+
+Stellar Scan is not a replacement for a professional smart contract security audit.
 
 ## Privacy
 
-Stellar Scan does not require login, signup, wallet connection, private keys, or transaction signing.
+Stellar Scan does not require:
 
-Scan history is stored locally in the browser.
+- Login
+- Signup
+- Wallet connection
+- Private keys
+- Transaction signing
+
+Scan history is stored locally in the user's browser.
 
 ## Roadmap
 
@@ -181,6 +327,27 @@ Scan history is stored locally in the browser.
 - Advanced security scoring
 - Exportable security reports
 - Automated contract monitoring
+
+## Project Structure
+
+```text
+stellar-wallet-scanner/
+│
+├── assets/
+│
+├── video/
+│   └── out/
+│       └── pitch.mp4
+│
+├── frontend/
+│
+├── backend/
+│
+├── README.md
+└── ...
+```
+
+The exact project structure may evolve as development continues.
 
 ## Author
 
