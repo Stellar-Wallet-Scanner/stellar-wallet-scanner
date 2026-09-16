@@ -1,6 +1,6 @@
 # Stellar Scan — Pitch Video Script (~1:59)
 
-> **Final render:** `video/out/pitch.mp4` (1920×1080, 1:59, ~36MB) · watch: https://gofile.io/d/ad1YDCAe
+> **Final render:** `video/out/pitch.mp4` (1920×1080, 1:59, ~36MB) · watch: https://github.com/mosesifunanya/stellar-wallet-scanner/blob/main/video/out/pitch.mp4
 > **Thumbnail:** `assets/pitch-thumbnail.png` (embedded in README)
 
 Voice: Gemini TTS — `Kore` (confident, warm). Style: documentary narrator, cinematic energy.

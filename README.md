@@ -1,6 +1,6 @@
 # Stellar Scan
 
-[![Watch the pitch video](https://img.shields.io/badge/🎬_Watch_the_pitch_video-2_min-7c5cff?style=for-the-badge)](https://gofile.io/d/ad1YDCAe)
+[![Watch the pitch video](https://img.shields.io/badge/🎬_Watch_the_pitch_video-2_min-7c5cff?style=for-the-badge)](https://github.com/mosesifunanya/stellar-wallet-scanner/blob/main/video/out/pitch.mp4)
 [![Live on Vercel](https://img.shields.io/badge/▲_Live_on_Vercel-stellar--wallet--scanner-000?style=for-the-badge&logo=vercel)](https://stellar-wallet-scanner.vercel.app)
 [![Built on Stellar](https://img.shields.io/badge/Built_on-Stellar_Testnet-7d00ff?style=for-the-badge&logo=stellar)](https://stellar.org)
 [![License](https://img.shields.io/badge/License-Open_source-22d3ee?style=for-the-badge)](#license)
@@ -8,12 +8,13 @@
 <br />
 
 <div align="center">
-  <a href="https://gofile.io/d/ad1YDCAe">
+  <a href="https://github.com/mosesifunanya/stellar-wallet-scanner/blob/main/video/out/pitch.mp4">
     <img src="assets/pitch-thumbnail.png" alt="Stellar Scan — pitch video thumbnail: account scan scoring 100/100" width="820" />
   </a>
   <p><sub><b>▶ Click the thumbnail to watch the 2-minute product pitch.</b>
   Real UI captures, Gemini voice-over, architecture walkthrough and a live Vercel deployment —
-  <a href="#-product-pitch-video">scene-by-scene breakdown</a> below.</sub></p>
+  <a href="#-product-pitch-video">scene-by-scene breakdown</a> below.<br />
+  Mirror: <a href="https://gofile.io/d/ad1YDCAe">gofile.io/d/ad1YDCAe</a></sub></p>
 </div>
 
 <br />
@@ -35,6 +36,9 @@ Anyone can paste a Stellar address and — in seconds — know what they are act
 
 The 2-minute pitch above is the fastest way to understand the product. What it covers:
 
+> **▶ [Watch the pitch video (stream right on GitHub)](https://github.com/mosesifunanya/stellar-wallet-scanner/blob/main/video/out/pitch.mp4)**
+> Direct file: [raw.githubusercontent.com — video/out/pitch.mp4](https://raw.githubusercontent.com/mosesifunanya/stellar-wallet-scanner/main/video/out/pitch.mp4) · Mirror: [gofile.io/d/ad1YDCAe](https://gofile.io/d/ad1YDCAe)
+
 | # | Scene | What you see |
 |---|-------|--------------|
 | 1 | Cold open | Logo, tagline — *security intelligence for Stellar, in seconds* |
@@ -46,7 +50,7 @@ The 2-minute pitch above is the fastest way to understand the product. What it c
 | 7 | Architecture | React + Vite → Rust/Axum → Stellar RPC, read-only by design |
 | 8 | Live demo + CTA | Production Vercel deployment, try-your-own-address |
 
-**▶ [Watch the full pitch video](https://gofile.io/d/ad1YDCAe)** · [Open the live app](https://stellar-wallet-scanner.vercel.app)
+**▶ [Watch the full pitch video](https://github.com/mosesifunanya/stellar-wallet-scanner/blob/main/video/out/pitch.mp4)** · [Open the live app](https://stellar-wallet-scanner.vercel.app)
 
 ## 🖥️ Live Demo
 
