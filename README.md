@@ -51,16 +51,16 @@ The 2-minute product pitch demonstrates the core product experience, architectur
 
 ### What the pitch covers
 
-| # | Scene | Description |
-|---|---|---|
-| 1 | Cold Open | Product introduction and security-focused positioning |
-| 2 | The Problem | Challenges involved in understanding on-chain contract behavior |
-| 3 | The Solution | Testnet address scanning and read-only security analysis |
-| 4 | Account Scan | Analysis of a Stellar account and security scoring |
-| 5 | Contract Scan | Soroban WASM analysis and capability detection |
-| 6 | History & Analytics | Local scan history and security trends |
-| 7 | Architecture | React + Vite → Rust/Axum → Stellar RPC |
-| 8 | Live Demo | Production Vercel deployment and application walkthrough |
+| #   | Scene               | Description                                                     |
+| --- | ------------------- | --------------------------------------------------------------- |
+| 1   | Cold Open           | Product introduction and security-focused positioning           |
+| 2   | The Problem         | Challenges involved in understanding on-chain contract behavior |
+| 3   | The Solution        | Testnet address scanning and read-only security analysis        |
+| 4   | Account Scan        | Analysis of a Stellar account and security scoring              |
+| 5   | Contract Scan       | Soroban WASM analysis and capability detection                  |
+| 6   | History & Analytics | Local scan history and security trends                          |
+| 7   | Architecture        | React + Vite → Rust/Axum → Stellar RPC                          |
+| 8   | Live Demo           | Production Vercel deployment and application walkthrough        |
 
 ### Watch the pitch
 
@@ -76,16 +76,16 @@ Stellar Scan currently operates on Stellar Testnet.
 
 You can test the application with:
 
+### Soroban Testnet Contract
+
+```text
+CBRNQB56MDSCZERPTQD6KRC26Z5GBI43N4G57A525I7CCI4LH6E37PFD
+```
+
 ### Stellar Testnet Account
 
 ```text
 GBVVPXTBPYEOYQJHIIVIOUBFXXSHYSP6GN2XZN56L7VAX7ZNT66WDFSU
-```
-
-### Soroban Testnet Contract
-
-```text
-CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWFEIE3USCIHMXQDAMA
 ```
 
 No setup or wallet connection is required.
