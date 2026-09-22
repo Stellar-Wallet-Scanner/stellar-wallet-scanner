@@ -29,3 +29,9 @@ target/
 # Temporary files
 *.tmp
 *.temp
+
+# Video production workspace (large local assets)
+video-assets/
+
+# Video binary lives in the GitHub release, not in git
+assets/*.mp4

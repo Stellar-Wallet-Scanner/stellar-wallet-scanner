@@ -1,8 +1,42 @@
 # Stellar Wallet Scanner
 
+<p align="center">
+  <a href="https://github.com/Stellar-Wallet-Scanner/stellar-wallet-scanner/releases/tag/pitch-video" target="_blank">
+    <img src="assets/pitch-video-thumb.png" alt="Stellar Wallet Scanner — Product Pitch Video" width="820"/>
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/Stellar-Wallet-Scanner/stellar-wallet-scanner/releases/tag/pitch-video" target="_blank"><img alt="▶ Watch the pitch" src="https://img.shields.io/badge/%E2%96%B6_Watch_the_pitch_video-2%3A05-247b4c?style=for-the-badge&logo=github&labelColor=0b1512"/></a>
+  &nbsp;
+  <a href="https://stellar-wallet-scanner.vercel.app" target="_blank"><img alt="Live Demo" src="https://img.shields.io/badge/Live_Demo-vercel.app-4ed88f?style=for-the-badge&logo=vercel&labelColor=0b1512"/></a>
+  &nbsp;
+  <a href="https://stellar-wallet-scan.vercel.app/health" target="_blank"><img alt="Backend" src="https://img.shields.io/badge/Backend_API-Rust_·_Axum-dea584?style=for-the-badge&logo=rust&labelColor=0b1512"/></a>
+  &nbsp;
+  <a href="https://stellar.expert/explorer/testnet/contract/CAK5BORDDC4G3XDU4RBXDJU2PUSHOY4DQMX53ILJKGI2ORP2P5B332VL" target="_blank"><img alt="Contract" src="https://img.shields.io/badge/Soroban_Contract-testnet-8a6ff1?style=for-the-badge&logo=stellar&labelColor=0b1512"/></a>
+</p>
+
 A professional Stellar Testnet security and blockchain inspection platform for analyzing classic Stellar accounts and Soroban smart contracts.
 
 The application combines a React frontend, Rust backend, Stellar Testnet infrastructure, and a deployed Soroban Scanner Registry smart contract to provide an end-to-end blockchain scanning experience.
+
+---
+
+# 🎬 Product Pitch Video
+
+> **The fastest way to understand this project.** A narrated, 2-minute walkthrough of the problem, the solution, live features, the on-chain registry, and the full architecture — with real captures from the production deployment.
+
+<p align="center">
+  <a href="https://github.com/Stellar-Wallet-Scanner/stellar-wallet-scanner/releases/tag/pitch-video" target="_blank">
+    <img src="assets/pitch-video-thumb.png" alt="▶ Watch: Stellar Wallet Scanner pitch video (2:05)" width="760"/>
+  </a>
+</p>
+
+| | |
+| --- | --- |
+| **▶ Watch now** | [Stream on the release page](https://github.com/Stellar-Wallet-Scanner/stellar-wallet-scanner/releases/tag/pitch-video) |
+| **⬇ Download MP4** | [stellar-wallet-scanner-pitch.mp4 (1080p, 56 MB)](https://github.com/Stellar-Wallet-Scanner/stellar-wallet-scanner/releases/download/pitch-video/stellar-wallet-scanner-pitch.mp4) |
+| **📋 What's inside** | Problem → Solution → Live account & contract scans → On-chain Scanner Registry → Architecture → Rust contract → Why it's different |
 
 ---
 
