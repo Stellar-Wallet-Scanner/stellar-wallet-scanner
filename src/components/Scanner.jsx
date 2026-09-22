@@ -23,6 +23,7 @@ import {
   detectAddressType,
   fundTestnetXlm,
   getUsdcSetup,
+  getScannerRegistryInfo,
   scanAddress,
 } from "../services/stellar";
 
@@ -127,6 +128,12 @@ export default function Scanner({ onScanComplete }) {
   const [notifications, setNotifications] = useState([]);
 
   const [showAdvanced, setShowAdvanced] = useState(false);
+
+  const [scannerRegistry, setScannerRegistry] = useState(null);
+
+  const [scannerRegistryLoading, setScannerRegistryLoading] = useState(true);
+
+  const [scannerRegistryError, setScannerRegistryError] = useState("");
 
   /* =======================================================
      NOTIFICATIONS
@@ -451,6 +458,45 @@ export default function Scanner({ onScanComplete }) {
 
     return () => window.clearInterval(timer);
   }, [fundingCooldownSeconds]);
+
+  /* =======================================================
+     SCANNER REGISTRY CONTRACT
+  ======================================================= */
+
+  useEffect(() => {
+    let active = true;
+
+    const loadScannerRegistry = async () => {
+      setScannerRegistryLoading(true);
+      setScannerRegistryError("");
+
+      try {
+        const registry = await getScannerRegistryInfo();
+
+        if (!active) return;
+
+        setScannerRegistry(registry);
+      } catch (registryError) {
+        if (!active) return;
+
+        console.error("Scanner Registry load failed:", registryError);
+        setScannerRegistryError(
+          registryError?.message ||
+            "Unable to read the Scanner Registry contract.",
+        );
+      } finally {
+        if (active) {
+          setScannerRegistryLoading(false);
+        }
+      }
+    };
+
+    loadScannerRegistry();
+
+    return () => {
+      active = false;
+    };
+  }, []);
 
   /* =======================================================
      KEYBOARD SHORTCUT
@@ -2006,6 +2052,97 @@ export default function Scanner({ onScanComplete }) {
           Stellar Testnet
           <span>Read-only security analysis</span>
         </div>
+      </section>
+
+      {/* =====================================================
+          SCANNER REGISTRY
+      ===================================================== */}
+
+      <section
+        className="scanner-card scanner-section"
+        style={{ marginBottom: "18px" }}
+      >
+        <div className="scanner-section-header">
+          <div>
+            <h2 className="scanner-section-title">
+              <ShieldCheck size={17} />
+              Scanner Registry
+            </h2>
+            <p className="scanner-section-subtitle">
+              On-chain registry for this Stellar Wallet Scanner deployment.
+            </p>
+          </div>
+
+          <span className="scanner-type-badge">
+            {scannerRegistryLoading
+              ? "Loading"
+              : scannerRegistry
+                ? "Deployed"
+                : "Unavailable"}
+          </span>
+        </div>
+
+        {scannerRegistryLoading ? (
+          <div className="scanner-empty">
+            <Loader2 size={16} className="scanner-spinner" />
+            <div style={{ marginTop: "8px" }}>
+              Reading the Scanner Registry from Stellar Testnet...
+            </div>
+          </div>
+        ) : scannerRegistry ? (
+          <>
+            <div className="scanner-contract">
+              <ContractInfo
+                label="Network"
+                value={scannerRegistry.network || "Stellar Testnet"}
+              />
+              <ContractInfo
+                label="Version"
+                value={scannerRegistry.version || "1.0.0"}
+              />
+              <ContractInfo
+                label="Scan count"
+                value={formatNumber(scannerRegistry.scanCount ?? 0, 0)}
+              />
+              <ContractInfo
+                label="Admin"
+                value={shortenAddress(scannerRegistry.admin, 8, 6)}
+              />
+              <ContractInfo
+                label="Contract"
+                value={shortenAddress(scannerRegistry.contractAddress, 8, 6)}
+              />
+              <ContractInfo label="Status" value="Deployed" />
+            </div>
+
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "8px",
+                marginTop: "14px",
+              }}
+            >
+              <a
+                href={`https://lab.stellar.org/r/testnet/contract/${scannerRegistry.contractAddress}`}
+                target="_blank"
+                rel="noreferrer"
+                className="scanner-funding-button"
+                style={{
+                  width: "auto",
+                  padding: "0 12px",
+                  textDecoration: "none",
+                }}
+              >
+                View on Stellar Lab <ExternalLink size={13} />
+              </a>
+            </div>
+          </>
+        ) : (
+          <div className="scanner-error-note">
+            {scannerRegistryError || "The Scanner Registry could not be read."}
+          </div>
+        )}
       </section>
 
       {/* =====================================================

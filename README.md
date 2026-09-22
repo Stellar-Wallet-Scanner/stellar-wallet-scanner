@@ -1,364 +1,768 @@
-# Stellar Scan
+# Stellar Wallet Scanner
 
-[![Watch the Pitch Video](https://img.shields.io/badge/🎬_Watch_the_Pitch_Video-2_min-7c5cff?style=for-the-badge)](https://github.com/Stellar-Wallet-Scanner/stellar-wallet-scanner/blob/main/video/out/pitch.mp4)
-[![Live on Vercel](https://img.shields.io/badge/▲_Live_on_Vercel-stellar--wallet--scanner-000?style=for-the-badge&logo=vercel)](https://stellar-wallet-scanner.vercel.app)
-[![Built on Stellar](https://img.shields.io/badge/Built_on-Stellar_Testnet-7d00ff?style=for-the-badge&logo=stellar)](https://stellar.org)
-[![License](https://img.shields.io/badge/License-Open_Source-22d3ee?style=for-the-badge)](#license)
+A professional Stellar Testnet security and blockchain inspection platform for analyzing classic Stellar accounts and Soroban smart contracts.
 
-<br />
+The application combines a React frontend, Rust backend, Stellar Testnet infrastructure, and a deployed Soroban Scanner Registry smart contract to provide an end-to-end blockchain scanning experience.
 
-<div align="center">
+---
 
-  <a href="https://github.com/Stellar-Wallet-Scanner/stellar-wallet-scanner/blob/main/video/out/pitch.mp4">
-    <img src="assets/pitch-thumbnail.png" alt="Stellar Scan pitch video thumbnail" width="820" />
-  </a>
-
-  <p>
-    <sub>
-      <b>▶ Click the thumbnail to watch the 2-minute product pitch.</b><br />
-      Real UI captures, Gemini voice-over, architecture walkthrough and live Vercel deployment.
-    </sub>
-  </p>
-
-</div>
-
-<br />
-
-## Overview
-
-Stellar Scan is a security intelligence platform for the Stellar ecosystem.
-
-It provides read-only analysis of Stellar Testnet accounts and Soroban smart contracts, helping users surface potential security risks through a simple and accessible dashboard.
-
-The platform is designed to allow users to inspect Stellar addresses without connecting a wallet, providing a low-friction way to understand account configurations and deployed Soroban contract capabilities.
-
-## Why Stellar Scan
-
-Anyone can paste a Stellar address and quickly understand what they are interacting with before trusting it with value.
-
-### Key capabilities
-
-- Two address types, one scanner — wallets (`G...`) and Soroban smart contracts (`C...`)
-- Instant security verdicts — scores plus severity-ranked findings, not a wall of raw chain data
-- Contract risk detection — inspects deployed WASM, enumerates exported functions, and flags admin, upgrade, and pause capabilities
-- Account configuration audits — balances, signers, and thresholds flagged when risky
-- Zero-friction — no wallet connection, no private keys, no transaction signing, no sign-up
-- Local-first history and analytics — every scan stays in your browser and rolls up into security trends
-
-## 🎬 Product Pitch Video
-
-The 2-minute product pitch demonstrates the core product experience, architecture, and live deployment.
-
-### What the pitch covers
-
-| #   | Scene               | Description                                                     |
-| --- | ------------------- | --------------------------------------------------------------- |
-| 1   | Cold Open           | Product introduction and security-focused positioning           |
-| 2   | The Problem         | Challenges involved in understanding on-chain contract behavior |
-| 3   | The Solution        | Testnet address scanning and read-only security analysis        |
-| 4   | Account Scan        | Analysis of a Stellar account and security scoring              |
-| 5   | Contract Scan       | Soroban WASM analysis and capability detection                  |
-| 6   | History & Analytics | Local scan history and security trends                          |
-| 7   | Architecture        | React + Vite → Rust/Axum → Stellar RPC                          |
-| 8   | Live Demo           | Production Vercel deployment and application walkthrough        |
-
-### Watch the pitch
-
-[▶ Watch the full pitch video](https://github.com/Stellar-Wallet-Scanner/stellar-wallet-scanner/blob/main/video/out/pitch.mp4)
-
-[Open the live application](https://stellar-wallet-scanner.vercel.app)
-
-## 🖥️ Live Demo
-
-### [stellar-wallet-scanner.vercel.app](https://stellar-wallet-scanner.vercel.app)
-
-Stellar Scan currently operates on Stellar Testnet.
-
-You can test the application with:
-
-### Soroban Testnet Contract
-
-```text
-CBRNQB56MDSCZERPTQD6KRC26Z5GBI43N4G57A525I7CCI4LH6E37PFD
-```
-
-### Stellar Testnet Account
-
-```text
-GBVVPXTBPYEOYQJHIIVIOUBFXXSHYSP6GN2XZN56L7VAX7ZNT66WDFSU
-```
-
-No setup or wallet connection is required.
-
-Simply paste a supported Testnet address and scan.
-
-## Features
-
-### Stellar Account Analysis
-
-- Scan Stellar Testnet accounts (`G...`)
-- Retrieve account information
-- Analyze account balances
-- Inspect signers
-- Analyze account thresholds
-- Identify potentially risky account configurations
-
-### Soroban Contract Analysis
-
-- Scan Soroban smart contracts (`C...`)
-- Retrieve deployed contract information
-- Inspect deployed WASM
-- Enumerate exported functions
-- Detect administrative capabilities
-- Detect upgrade-related capabilities
-- Detect pause-related capabilities
-- Generate preliminary security findings
-
-### User Experience
-
-- Simple address-based scanning
-- No wallet connection
-- No private keys
-- No transaction signing
-- No account registration
-- Responsive interface
-- Dark and light mode
-- Local scan history
-- Security analytics
-
-## How It Works
-
-```text
-Stellar Address
-      ↓
-Address Detection
-      ↓
-Account / Smart Contract
-      ↓
-On-chain Analysis
-      ↓
-Security Assessment
-      ↓
-Score & Findings
-```
-
-The application first determines whether the submitted address represents a Stellar account or a Soroban smart contract.
-
-The appropriate analysis pipeline is then executed and the resulting information is processed into security findings and a preliminary security score.
-
-## Architecture
-
-```text
-User enters Stellar address
-          |
-          v
-    Address Detection
-        /       \
-      G...      C...
-       |          |
-       v          v
-Existing or    Soroban
-New Account    Contract
-       |          |
-       v          v
-Rust Backend   WASM Analysis
-       |          |
-       v          v
-Account Data   Contract Data
-       |          |
-       +-----+----+
-             |
-             v
-      Security Assessment
-             |
-             v
-       Score & Findings
-```
-
-### Application Flow
-
-```text
-                    ┌──────────────────────┐
-                    │        User          │
-                    │   Stellar Address    │
-                    └──────────┬───────────┘
-                               │
-                               ▼
-                    ┌──────────────────────┐
-                    │  Address Detection   │
-                    └──────────┬───────────┘
-                               │
-                    ┌──────────┴───────────┐
-                    │                      │
-                    ▼                      ▼
-              G... Account            C... Contract
-                    │                      │
-                    ▼                      ▼
-             Account Analysis       WASM Analysis
-                    │                      │
-                    └──────────┬───────────┘
-                               │
-                               ▼
-                    ┌──────────────────────┐
-                    │ Security Assessment  │
-                    └──────────┬───────────┘
-                               │
-                               ▼
-                    ┌──────────────────────┐
-                    │  Score & Findings    │
-                    └──────────────────────┘
-```
-
-## Wallet Flow
-
-For a new `G...` Testnet account, the backend can detect that the account is not funded and handle the Testnet funding flow before completing the scan.
-
-For an existing `G...` account, Stellar Scan retrieves the available account information and performs the security analysis directly.
-
-For a `C...` address, the application retrieves the deployed Soroban contract data and analyzes its WASM and exported functions.
-
-## Technology Stack
+## Live Project
 
 ### Frontend
+
+https://stellar-wallet-scanner.vercel.app
+
+### Backend
+
+https://stellar-wallet-scan.vercel.app
+
+### Network
+
+Stellar Testnet
+
+---
+
+# Scanner Registry Smart Contract
+
+The project includes a dedicated Soroban smart contract deployed on the Stellar Testnet.
+
+## Contract Address
+
+# `CAK5BORDDC4G3XDU4RBXDJU2PUSHOY4DQMX53ILJKGI2ORP2P5B332VL`
+
+This is the official Scanner Registry contract used by the project.
+
+### View Contract
+
+Stellar Lab:
+
+https://lab.stellar.org/r/testnet/contract/CAK5BORDDC4G3XDU4RBXDJU2PUSHOY4DQMX53ILJKGI2ORP2P5B332VL
+
+Stellar Expert:
+
+https://stellar.expert/explorer/testnet/contract/CAK5BORDDC4G3XDU4RBXDJU2PUSHOY4DQMX53ILJKGI2ORP2P5B332VL
+
+### Deployment Transaction
+
+`20233dc6426cbcc60bc3efb8896ff797195ae3b3b503b943f1f1ae3696554b8d`
+
+### Initialization Transaction
+
+`b2b7c584dd2d9fd8e21574038d803d02909febfa00917bb360d9dd8bc1cd0981`
+
+### WASM Hash
+
+`2ea208de1516be0f27709d54b015b3745d5f5532d4d2c50ca5cb2d5fbcb2e8c7`
+
+### Contract Version
+
+`1.0.0`
+
+---
+
+# Overview
+
+Stellar Wallet Scanner is a blockchain security and inspection platform designed specifically for the Stellar Testnet.
+
+The scanner accepts two major types of Stellar addresses:
+
+- Classic Stellar accounts beginning with `G`
+- Soroban smart contracts beginning with `C`
+
+The application detects the address type automatically and routes the request through the appropriate scanning system.
+
+For classic Stellar accounts, the frontend communicates with a Rust backend that retrieves and analyzes account information.
+
+For Soroban contracts, the application inspects contract metadata, WASM information, exported functions, and contract structure.
+
+The platform also includes a Soroban Scanner Registry contract that provides an on-chain registry for the scanner itself.
+
+---
+
+# Key Features
+
+## Stellar Account Scanner
+
+Analyze classic Stellar Testnet accounts beginning with `G`.
+
+The scanner can inspect:
+
+- XLM balance
+- Stellar assets
+- Token information
+- Signers
+- Account security information
+- Security findings
+- Account status
+- Testnet funding information
+
+## Soroban Contract Scanner
+
+Analyze Soroban smart contracts beginning with `C`.
+
+The scanner can inspect:
+
+- Contract existence
+- Contract instance information
+- WASM hash
+- WASM size
+- WASM validation
+- Exported contract functions
+- Contract metadata
+- Security information
+
+Example contract:
+
+```text
+CAK5BORDDC4G3XDU4RBXDJU2PUSHOY4DQMX53ILJKGI2ORP2P5B332VL
+```
+
+---
+
+# Soroban Scanner Registry
+
+The project includes a dedicated Soroban smart contract called `ScannerRegistry`.
+
+The contract acts as an on-chain registry for the scanner.
+
+It stores:
+
+- Scanner administrator
+- Scanner version
+- Scan count
+
+The registry provides a blockchain based source of truth for important scanner metadata.
+
+### Registry Functions
+
+```text
+initialize()
+get_admin()
+get_version()
+get_scan_count()
+record_scan()
+```
+
+The contract is deployed on Stellar Testnet and initialized with:
+
+```text
+Version: 1.0.0
+Network: Stellar Testnet
+```
+
+The registry is displayed directly inside the application so users can verify the deployed scanner contract.
+
+---
+
+# Architecture
+
+```text
+                         ┌──────────────────────────┐
+                         │      User / Browser      │
+                         └────────────┬─────────────┘
+                                      │
+                                      ▼
+                         ┌──────────────────────────┐
+                         │      React Frontend      │
+                         │      Vite + JavaScript   │
+                         └────────────┬─────────────┘
+                                      │
+                         ┌────────────┴─────────────┐
+                         │                          │
+                         ▼                          ▼
+              ┌─────────────────────┐   ┌─────────────────────┐
+              │  Classic Account    │   │   Soroban Contract  │
+              │       G...           │   │        C...          │
+              └──────────┬──────────┘   └──────────┬──────────┘
+                         │                          │
+                         ▼                          ▼
+              ┌─────────────────────┐   ┌─────────────────────┐
+              │    Rust Backend     │   │ Stellar Testnet RPC│
+              │     Axum API        │   │     / Contract     │
+              └──────────┬──────────┘   └──────────┬──────────┘
+                         │                          │
+                         ▼                          ▼
+              ┌─────────────────────┐   ┌─────────────────────┐
+              │ Stellar Testnet     │   │ Scanner Registry    │
+              │ Horizon             │   │ Soroban Contract    │
+              └─────────────────────┘   └─────────────────────┘
+```
+
+---
+
+# Technology Stack
+
+## Frontend
 
 - React
 - Vite
 - JavaScript
 - Tailwind CSS
 - Lucide React
+- Stellar JavaScript SDK
 
-### Blockchain
-
-- Stellar SDK
-- Soroban
-- Stellar Testnet
-- Stellar RPC
-- Stellar XDR
-
-### Backend
+## Backend
 
 - Rust
-- Rust-based backend services
-- WASM analysis
+- Axum
+- Tokio
+- Reqwest
+- Serde
+- Tower HTTP
+- Dotenvy
 
-## Getting Started
+## Blockchain
 
-### Prerequisites
+- Stellar Testnet
+- Soroban
+- Stellar RPC
+- Stellar Horizon
+- Stellar JavaScript SDK
+- Stellar CLI
 
-Make sure you have Node.js and npm installed.
+## Smart Contract
 
-### Clone the repository
+- Rust
+- Soroban SDK
+- WASM
+- Stellar Testnet
 
-```bash
-git clone https://github.com/Stellar-Wallet-Scanner/stellar-wallet-scanner.git
+## Deployment
+
+- Vercel
+- GitHub
+
+---
+
+# Project Structure
+
+```text
+stellar-wallet-scanner/
+│
+├── backend/
+│   ├── src/
+│   ├── Cargo.toml
+│   ├── Cargo.lock
+│   ├── Dockerfile.vercel
+│   └── .env
+│
+├── contracts/
+│   ├── Cargo.toml
+│   ├── README.md
+│   ├── AGENTS.md
+│   └── contracts/
+│       └── scanner_registry/
+│           ├── Cargo.toml
+│           ├── Makefile
+│           └── src/
+│               ├── lib.rs
+│               └── test.rs
+│
+├── public/
+│   └── assets
+│
+├── src/
+│   ├── components/
+│   │   ├── Dashboard.jsx
+│   │   ├── Header.jsx
+│   │   ├── Sidebar.jsx
+│   │   ├── Scanner.jsx
+│   │   ├── ScannerRegistry.jsx
+│   │   ├── ScanHistory.jsx
+│   │   └── SecurityAnalytics.jsx
+│   │
+│   ├── services/
+│   │   └── stellar.js
+│   │
+│   ├── App.jsx
+│   └── main.jsx
+│
+├── .env
+├── package.json
+├── vite.config.js
+└── README.md
 ```
 
-### Navigate into the project
+---
 
-```bash
-cd stellar-wallet-scanner
+# How Scanning Works
+
+## 1. User enters an address
+
+The user enters a Stellar Testnet address.
+
+The application determines whether it is:
+
+```text
+G...  → Classic Stellar Account
+C...  → Soroban Smart Contract
 ```
 
-### Install dependencies
+The application uses Stellar address validation rather than relying only on the first character.
+
+## 2. Classic Stellar Account
+
+For a classic account:
+
+```text
+User
+  ↓
+React Scanner
+  ↓
+Rust Backend
+  ↓
+Stellar Testnet
+  ↓
+Account Data
+  ↓
+Security Analysis
+  ↓
+Scanner Result
+```
+
+The Rust backend handles the account scanning request and communicates with Stellar Testnet infrastructure.
+
+## 3. Soroban Contract
+
+For a Soroban contract:
+
+```text
+User
+  ↓
+React Scanner
+  ↓
+Stellar Testnet RPC
+  ↓
+Contract Instance
+  ↓
+WASM Information
+  ↓
+Exported Functions
+  ↓
+Contract Analysis
+  ↓
+Scanner Result
+```
+
+This allows the application to inspect Soroban contracts directly from the frontend using Stellar blockchain infrastructure.
+
+---
+
+# Security Model
+
+The application was designed so that users do not need to provide wallet credentials.
+
+The scanner does not require:
+
+- Wallet login
+- Private keys
+- Seed phrases
+- Transaction signing from the user
+- Wallet connection
+
+The application is designed for read and analysis operations.
+
+The Soroban Scanner Registry administrator authorization is kept separate from the frontend.
+
+Private credentials should never be placed inside frontend environment variables or committed to GitHub.
+
+---
+
+# Testnet Funding
+
+The project supports Stellar Testnet wallet funding through Friendbot.
+
+Friendbot is used only for Stellar Testnet accounts.
+
+The funding flow is separate from the Scanner Registry smart contract.
+
+```text
+Scanner
+    │
+    ├── Scan account
+    │
+    └── Request Testnet funding
+              │
+              ▼
+          Friendbot
+              │
+              ▼
+       Stellar Testnet
+```
+
+No mainnet funds are involved in the application's Testnet funding functionality.
+
+---
+
+# Scanner Registry Contract
+
+The Scanner Registry smart contract was written in Rust using the Soroban SDK.
+
+The contract stores its registry data using Soroban instance storage.
+
+The stored information includes:
+
+```text
+admin
+version
+scans
+```
+
+Initialization requires administrator authorization.
+
+The contract also prevents the registry from being initialized more than once.
+
+The `record_scan` function requires authorization from the stored administrator before modifying the scan counter.
+
+---
+
+# Smart Contract Tests
+
+The contract includes tests covering:
+
+### Registry initialization
+
+Verifies that the administrator, version and initial scan count are stored correctly.
+
+### Scan recording
+
+Verifies that scan count increments correctly.
+
+### Initialization protection
+
+Verifies that the contract cannot be initialized more than once.
+
+Test result:
+
+```text
+running 3 tests
+
+test test::test_initialize_and_read_registry ... ok
+test test::test_cannot_initialize_twice ... ok
+test test::test_record_scan ... ok
+
+test result: ok
+
+3 passed
+0 failed
+```
+
+---
+
+# Smart Contract Build
+
+The optimized Soroban contract produces:
+
+```text
+WASM:
+scanner_registry.wasm
+
+WASM Size:
+1197 bytes optimized
+
+WASM Hash:
+2ea208de1516be0f27709d54b015b3745d5f5532d4d2c50ca5cb2d5fbcb2e8c7
+
+Exported Functions:
+5
+```
+
+Exported functions:
+
+```text
+get_admin
+get_scan_count
+get_version
+initialize
+record_scan
+```
+
+---
+
+# Backend API
+
+The Rust backend exposes the following routes.
+
+## Health
+
+```http
+GET /health
+```
+
+Checks whether the backend service is available.
+
+## Root
+
+```http
+GET /
+```
+
+Returns backend status information.
+
+## Check Wallet
+
+```http
+GET /api/wallet/check/{address}
+```
+
+Checks the status of a Stellar Testnet wallet.
+
+## Scan Wallet
+
+```http
+POST /api/wallet/scan/{address}
+```
+
+Runs the Stellar account security scan.
+
+## Fund Wallet
+
+```http
+POST /api/wallet/fund/{address}
+```
+
+Requests Stellar Testnet funding where applicable.
+
+---
+
+# Environment Variables
+
+## Frontend
+
+Create a `.env` file:
+
+```env
+VITE_BACKEND_URL=http://localhost:8080
+
+VITE_SCANNER_CONTRACT_ADDRESS=CAK5BORDDC4G3XDU4RBXDJU2PUSHOY4DQMX53ILJKGI2ORP2P5B332VL
+```
+
+For production, the backend URL should point to the deployed backend.
+
+## Backend
+
+Create a backend `.env` file:
+
+```env
+HORIZON_URL=https://horizon-testnet.stellar.org
+FRIENDBOT_URL=https://friendbot.stellar.org
+AUTO_FUND_BELOW_XLM=0
+HOST=127.0.0.1
+PORT=8080
+FRONTEND_ORIGIN=http://localhost:5173
+```
+
+Never commit secrets or private keys to GitHub.
+
+---
+
+# Local Development
+
+## Frontend
+
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-### Start the development server
+Start the frontend:
 
 ```bash
 npm run dev
 ```
 
-The application will then be available through the local development URL provided by Vite.
+The Vite development server will normally run at:
 
-### Build for production
+```text
+http://localhost:5173
+```
+
+## Backend
+
+Navigate to the backend:
+
+```bash
+cd backend
+```
+
+Run the Rust server:
+
+```bash
+cargo run
+```
+
+The backend will normally run at:
+
+```text
+http://127.0.0.1:8080
+```
+
+---
+
+# Production Build
+
+Build the frontend:
 
 ```bash
 npm run build
 ```
 
-## Network
+The production files are generated in:
 
-Stellar Scan currently operates on:
+```text
+dist/
+```
+
+---
+
+# Deployment
+
+The project uses separate Vercel deployments for the frontend and backend.
+
+### Frontend
+
+https://stellar-wallet-scanner.vercel.app
+
+### Backend
+
+https://stellar-wallet-scan.vercel.app
+
+The frontend communicates with the deployed Rust backend through the configured:
+
+```env
+VITE_BACKEND_URL
+```
+
+---
+
+# Stellar Network
+
+This project currently operates on:
 
 ```text
 Stellar Testnet
 ```
 
-All scanning functionality is designed to be read-only.
-
-The application does not require users to sign transactions or provide private keys.
-
-## Security Model
-
-Stellar Scan performs preliminary automated security analysis by examining publicly available account and contract information.
-
-Detected capabilities should be treated as security signals requiring further investigation.
-
-A detected administrative or upgrade capability does not automatically mean that a contract is vulnerable or malicious.
-
-## Security Notice
-
-Stellar Scan provides preliminary automated security analysis.
-
-Detected capabilities are security signals for further investigation and do not automatically indicate that a contract is vulnerable.
-
-Stellar Scan is not a replacement for a professional smart contract security audit.
-
-## Privacy
-
-Stellar Scan does not require:
-
-- Login
-- Signup
-- Wallet connection
-- Private keys
-- Transaction signing
-
-Scan history is stored locally in the user's browser.
-
-## Roadmap
-
-- Deeper Soroban security analysis
-- Improved authorization analysis
-- Function-level risk detection
-- Advanced security scoring
-- Exportable security reports
-- Automated contract monitoring
-
-## Project Structure
+Testnet infrastructure:
 
 ```text
-stellar-wallet-scanner/
-│
-├── assets/
-│
-├── video/
-│   └── out/
-│       └── pitch.mp4
-│
-├── frontend/
-│
-├── backend/
-│
-├── README.md
-└── ...
+Horizon:
+https://horizon-testnet.stellar.org
+
+Friendbot:
+https://friendbot.stellar.org
 ```
 
-The exact project structure may evolve as development continues.
+The project is intended for blockchain development, testing, security analysis and demonstration.
 
-## Author
+---
 
-### Moses Ifunanya Nobei
+# Current Contract Deployment
 
-Blockchain Developer | JavaScript Developer | Data Analyst
+| Property           | Value                                                              |
+| ------------------ | ------------------------------------------------------------------ |
+| Network            | Stellar Testnet                                                    |
+| Contract           | Scanner Registry                                                   |
+| Contract Address   | `CAK5BORDDC4G3XDU4RBXDJU2PUSHOY4DQMX53ILJKGI2ORP2P5B332VL`         |
+| Version            | `1.0.0`                                                            |
+| WASM Hash          | `2ea208de1516be0f27709d54b015b3745d5f5532d4d2c50ca5cb2d5fbcb2e8c7` |
+| WASM Size          | `1197 bytes`                                                       |
+| Exported Functions | `5`                                                                |
+| Network            | Stellar Testnet                                                    |
 
-- GitHub: https://github.com/mosesifunanya
-- LinkedIn: https://www.linkedin.com/in/mosesifunanya/
-- X: https://x.com/Ifynob53
+---
 
-## License
+# Design Goals
 
-Open-source project.
+The project was built around several principles:
+
+### Blockchain Native
+
+Use Stellar and Soroban infrastructure directly rather than simulating blockchain data.
+
+### Security First
+
+Avoid collecting private keys, seed phrases or unnecessary wallet credentials.
+
+### Developer Friendly
+
+Provide a simple interface for inspecting Stellar accounts and Soroban contracts.
+
+### Transparent
+
+Expose the Scanner Registry contract directly in the application so its blockchain deployment can be independently inspected.
+
+### Responsive
+
+The interface is designed for desktop, tablet and mobile screen sizes.
+
+---
+
+# Future Improvements
+
+Potential future improvements include:
+
+- Automatic on-chain recording of successful scans
+- Expanded Soroban contract analysis
+- Additional security heuristics
+- Historical on-chain scanner statistics
+- More detailed contract storage inspection
+- Additional Stellar asset analysis
+- Performance optimization and code splitting
+- Expanded automated security testing
+- Mainnet read-only support
+
+---
+
+# Project Status
+
+```text
+Frontend              Complete
+Rust Backend          Complete
+Wallet Scanner        Complete
+Contract Scanner      Complete
+Soroban Registry      Deployed
+Contract Tests        Passing
+Testnet Integration   Complete
+Vercel Deployment     Complete
+Responsive UI         Implemented
+```
+
+---
+
+# Author
+
+## Moses Ifunanya Nobei
+
+Blockchain Developer | Full Stack Developer | JavaScript Developer | Data Analyst
+
+Specializing in:
+
+- JavaScript
+- React
+- Node.js
+- Rust
+- Solidity
+- Soroban
+- Stellar
+- Smart Contracts
+- Web3
+- SQL
+- Data Analysis
+
+---
+
+# License
+
+This project is available for educational, development and demonstration purposes.
+
+See the repository license for applicable terms.
+
+---
+
+# Acknowledgements
+
+Built using the Stellar ecosystem and Soroban smart contract platform.
+
+Special thanks to the Stellar developer ecosystem and open source contributors whose tools and infrastructure make blockchain development on Stellar possible.

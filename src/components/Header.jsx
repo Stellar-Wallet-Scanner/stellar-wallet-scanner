@@ -173,7 +173,7 @@ function Header({
               className="text-sm font-semibold transition-colors duration-200 group-hover:text-[var(--text)]"
               style={{ color: "var(--text-secondary)" }}
             >
-              Wallet Security Overview
+              Stellar Security Scanner
             </span>
           </button>
         </div>

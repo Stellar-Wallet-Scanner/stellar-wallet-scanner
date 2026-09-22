@@ -1,10 +1,23 @@
-import { Activity, BarChart3, Grid2X2, History, Menu, X } from "lucide-react";
+import {
+  Activity,
+  BarChart3,
+  FileSearch,
+  Grid2X2,
+  History,
+  ShieldCheck,
+  X,
+} from "lucide-react";
 
 const navigation = [
   {
     id: "dashboard",
     label: "Dashboard",
     icon: Grid2X2,
+  },
+  {
+    id: "scanner",
+    label: "Scanner",
+    icon: FileSearch,
   },
   {
     id: "history",
@@ -15,6 +28,14 @@ const navigation = [
     id: "analytics",
     label: "Security Analytics",
     icon: BarChart3,
+  },
+];
+
+const blockchainNavigation = [
+  {
+    id: "registry",
+    label: "Scanner Registry",
+    icon: ShieldCheck,
   },
 ];
 
@@ -155,6 +176,57 @@ function Sidebar({ isOpen, setIsOpen, activePage, onNavigate }) {
                       style={{
                         background: "var(--accent)",
                       }}
+                    />
+                  )}
+                </button>
+              );
+            })}
+          </nav>
+
+          <div
+            className="mb-3 mt-8 px-3 text-[10px] font-bold uppercase tracking-[0.2em]"
+            style={{ color: "var(--text-muted)" }}
+          >
+            Blockchain
+          </div>
+
+          <nav className="space-y-1.5">
+            {blockchainNavigation.map((item) => {
+              const Icon = item.icon;
+              const active = activePage === item.id;
+
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => handleNavigate(item.id)}
+                  className="group flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm font-bold transition-all duration-200"
+                  style={{
+                    background: active ? "var(--accent-soft)" : "transparent",
+                    color: active
+                      ? "var(--accent-dark)"
+                      : "var(--text-secondary)",
+                    borderLeft: active
+                      ? "3px solid var(--accent)"
+                      : "3px solid transparent",
+                  }}
+                >
+                  <span
+                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg"
+                    style={{
+                      background: active
+                        ? "rgba(var(--accent-rgb), 0.12)"
+                        : "var(--surface-hover)",
+                      color: active ? "var(--accent)" : "var(--text-muted)",
+                    }}
+                  >
+                    <Icon size={17} />
+                  </span>
+                  <span className="min-w-0 flex-1 truncate">{item.label}</span>
+                  {active && (
+                    <span
+                      className="h-1.5 w-1.5 shrink-0 rounded-full"
+                      style={{ background: "var(--accent)" }}
                     />
                   )}
                 </button>
@@ -367,24 +439,6 @@ function Sidebar({ isOpen, setIsOpen, activePage, onNavigate }) {
           </div>
         </div>
       </aside>
-
-      {/* =====================================================
-          MOBILE MENU BUTTON
-      ===================================================== */}
-
-      <button
-        type="button"
-        onClick={() => setIsOpen?.(true)}
-        aria-label="Open navigation"
-        className="fixed left-3 top-3 z-30 flex h-10 w-10 items-center justify-center rounded-xl border lg:hidden"
-        style={{
-          background: "var(--surface)",
-          borderColor: "var(--border)",
-          color: "var(--text)",
-        }}
-      >
-        <Menu size={19} />
-      </button>
     </>
   );
 }

@@ -4,6 +4,8 @@ import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import ScanHistory from "./components/ScanHistory";
 import SecurityAnalytics from "./components/SecurityAnalytics";
+import Scanner from "./components/Scanner";
+import ScannerRegistry from "./components/ScannerRegistry";
 
 const HISTORY_STORAGE_KEY = "stellar-scan-history";
 const READ_NOTIFICATIONS_STORAGE_KEY = "stellar-scan-read-notifications";
@@ -198,6 +200,16 @@ function App() {
             onNavigate={handleNavigate}
           />
         );
+
+      case "scanner":
+        return (
+          <main className="min-h-screen w-full px-3 py-5 sm:px-4 sm:py-6 lg:px-6 lg:py-8">
+            <Scanner onScanComplete={handleScanComplete} />
+          </main>
+        );
+
+      case "registry":
+        return <ScannerRegistry />;
 
       case "history":
         return (

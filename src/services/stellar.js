@@ -1,10 +1,24 @@
-import { rpc, StrKey, xdr, Contract } from "@stellar/stellar-sdk";
+import {
+  rpc,
+  StrKey,
+  xdr,
+  Contract,
+  TransactionBuilder,
+  Networks,
+  scValToNative,
+} from "@stellar/stellar-sdk";
 
 const TESTNET_RPC_URL = "https://soroban-testnet.stellar.org";
 
 const BACKEND_URL = (
   import.meta.env.VITE_BACKEND_URL || "http://localhost:8080"
 ).replace(/\/$/, "");
+
+const SCANNER_CONTRACT_ADDRESS =
+  import.meta.env.VITE_SCANNER_CONTRACT_ADDRESS || "";
+
+const SCANNER_CONTRACT_ADMIN_ADDRESS =
+  "GD44TQ3LDTV3TTYF4YIDYCBCGUNC2TY37PCNRIK7LHQUWXV6SSF6IJK4";
 
 export const stellarServer = new rpc.Server(TESTNET_RPC_URL);
 
@@ -845,10 +859,15 @@ async function analyzeWasm(code) {
 
   return {
     wasmSize,
+
     validWasm,
+
     functions,
+
     findings,
+
     securityScore: score,
+
     securityStatus,
   };
 }
@@ -894,6 +913,98 @@ async function scanContract(address) {
 }
 
 /* =========================================================
+   SCANNER REGISTRY
+========================================================= */
+
+/*
+   This is the Scanner Registry contract used by the app.
+
+   Contract:
+   CAK5BORDDC4G3XDU4RBXDJU2PUSHOY4DQMX53ILJKGI2ORP2P5B332VL
+
+   Admin:
+   GD44TQ3LDTV3TTYF4YIDYCBCGUNC2TY37PCNRIK7LHQUWXV6SSF6IJK4
+
+   The registry is read-only from the frontend.
+
+   No private key is stored in the frontend.
+   No transaction is submitted here.
+*/
+
+export async function getScannerRegistryInfo() {
+  if (!SCANNER_CONTRACT_ADDRESS) {
+    throw new Error("Scanner Registry contract address is not configured.");
+  }
+
+  try {
+    if (!StrKey.isValidContract(SCANNER_CONTRACT_ADDRESS)) {
+      throw new Error(
+        "The configured Scanner Registry contract address is invalid.",
+      );
+    }
+
+    const contract = new Contract(SCANNER_CONTRACT_ADDRESS);
+
+    const sourceAccount = await stellarServer.getAccount(
+      SCANNER_CONTRACT_ADMIN_ADDRESS,
+    );
+
+    const callReadOnly = async (functionName) => {
+      const transaction = new TransactionBuilder(sourceAccount, {
+        fee: "100",
+        networkPassphrase: Networks.TESTNET,
+      })
+        .addOperation(contract.call(functionName))
+        .setTimeout(30)
+        .build();
+
+      const simulation = await stellarServer.simulateTransaction(transaction);
+
+      if (simulation?.error) {
+        throw new Error(simulation.error);
+      }
+
+      if (!simulation?.result?.retval) {
+        throw new Error(
+          `The Scanner Registry contract returned no value for ${functionName}.`,
+        );
+      }
+
+      return scValToNative(simulation.result.retval);
+    };
+
+    const [admin, version, scanCount] = await Promise.all([
+      callReadOnly("get_admin"),
+
+      callReadOnly("get_version"),
+
+      callReadOnly("get_scan_count"),
+    ]);
+
+    return {
+      contractAddress: SCANNER_CONTRACT_ADDRESS,
+
+      network: "Stellar Testnet",
+
+      status: "deployed",
+
+      admin: String(admin),
+
+      version: String(version),
+
+      scanCount: Number(scanCount),
+    };
+  } catch (error) {
+    console.error("Scanner Registry contract read failed:", error);
+
+    throw new Error(
+      error?.message ||
+        "Unable to read the Scanner Registry contract on Stellar Testnet.",
+    );
+  }
+}
+
+/* =========================================================
    MAIN SCANNER
 ========================================================= */
 
@@ -929,21 +1040,40 @@ export async function scanAddress(address) {
 
 export default {
   stellarServer,
+
   checkTestnetHealth,
+
   checkBackendHealth,
+
   checkUsdcTrustline,
+
   detectAddressType,
+
   fundTestnetXlm,
+
   getUsdcSetup,
+
   getTestUsdtSetup,
+
   getWalletAsset,
+
   getTestnetUsdcStatus,
+
   getTestnetUsdtStatus,
+
+  getScannerRegistryInfo,
+
   scanAddress,
+
   TESTNET_USDC_CODE,
+
   TESTNET_USDC_ISSUER,
+
   TESTNET_USDC_FAUCET_URL,
+
   TESTNET_USDC_TRUSTLINE_URL,
+
   TESTNET_USDT_CODE,
+
   TESTNET_USDT_SUPPORTED,
 };
