@@ -6,6 +6,58 @@ The application combines a React frontend, Rust backend, Stellar Testnet infrast
 
 ---
 
+# Stellar Scan
+
+[![Watch the Pitch Video](https://img.shields.io/badge/%F0%9F%8E%AC_Watch_the_Pitch_Video-2_min-7c5cff?style=for-the-badge)](https://github.com/Stellar-Wallet-Scanner/stellar-wallet-scanner/blob/main/video/out/pitch.mp4)
+
+[![Live on Vercel](https://img.shields.io/badge/%E2%96%B2_Live_on_Vercel-stellar--wallet--scanner-000?style=for-the-badge&logo=vercel)](https://stellar-wallet-scanner.vercel.app)
+
+[![Built on Stellar](https://img.shields.io/badge/Built_on-Stellar_Testnet-7d00ff?style=for-the-badge&logo=stellar)](https://stellar.org)
+
+[![License](https://img.shields.io/badge/License-Open_Source-22d3ee?style=for-the-badge)](#license)
+
+<div align="center">
+
+<a href="https://github.com/Stellar-Wallet-Scanner/stellar-wallet-scanner/blob/main/video/out/pitch.mp4">
+  <img src="assets/pitch-thumbnail.png" alt="Stellar Scan pitch video thumbnail" width="820" />
+</a>
+
+<p>
+  <sub>
+    <b>▶ Click the thumbnail to watch the 2-minute product pitch.</b><br />
+    Real UI captures, Gemini voice-over, architecture walkthrough and live Vercel deployment.
+  </sub>
+</p>
+
+</div>
+
+---
+
+## 🎬 Product Pitch Video
+
+The 2-minute product pitch demonstrates the core product experience, architecture, and live deployment.
+
+### What the pitch covers
+
+| #   | Scene               | Description                                                     |
+| --- | ------------------- | --------------------------------------------------------------- |
+| 1   | Cold Open           | Product introduction and security-focused positioning           |
+| 2   | The Problem         | Challenges involved in understanding on-chain contract behavior |
+| 3   | The Solution        | Testnet address scanning and read-only security analysis        |
+| 4   | Account Scan        | Analysis of a Stellar account and security scoring              |
+| 5   | Contract Scan       | Soroban WASM analysis and capability detection                  |
+| 6   | History & Analytics | Local scan history and security trends                          |
+| 7   | Architecture        | React + Vite → Rust/Axum → Stellar RPC                          |
+| 8   | Live Demo           | Production Vercel deployment and application walkthrough        |
+
+### Watch the pitch
+
+[▶ Watch the full pitch video](https://github.com/Stellar-Wallet-Scanner/stellar-wallet-scanner/blob/main/video/out/pitch.mp4)
+
+[Open the live application](https://stellar-wallet-scanner.vercel.app)
+
+---
+
 ## Live Project
 
 ### Frontend
